@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
+import reusable.BrowserCall;
 
 public class SalesforceloginValidationSteps {
 
@@ -42,9 +43,8 @@ public class SalesforceloginValidationSteps {
    @Given("user launch the browser and navigate to the url")
    public void launchURL(){
 
-      driver = new EdgeDriver();
-      driver.get("https://book.spicejet.com/");
-      driver.manage().window().maximize();
+    driver =  BrowserCall.browserInvo();
+
    }
 
    @When("user enters the username {string} and password {string}")
@@ -113,9 +113,13 @@ public class SalesforceloginValidationSteps {
 
       driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchVieworiginStation1_CTXT")).click();
       driver.findElement(By.xpath("//a[@value='BLR']")).click();
-      driver.findElement(By.xpath("//div[@id='glsControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTNR']//a[@value='CJB']")).click();
+  //    driver.findElement(By.xpath("//div[@id='glsControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTNR']//a[@value='CJB']")).click();
 
-//      WebElement form = driver.findElement(By.id("glsControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTNR"));
-//      form.findElement(By.xpath("//a[@value='CJB']")).click();
+      WebElement form = driver.findElement(By.id("glsControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTNR"));
+      form.findElement(By.xpath("//a[@value='CJB']")).click();
+
+     driver.findElement(By.cssSelector("[id='username']")).click();
+     driver.findElement(By.cssSelector("#username"));
+     driver.findElement(By.cssSelector(".input.r4.wide.mb16.mt8.username"));
    }
 }
