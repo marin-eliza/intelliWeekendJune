@@ -63,6 +63,8 @@ public class SalesforceloginValidationSteps {
    @Then("user should naviagte to the homepage")
    public void validateHomePage() {
 
+      driver.findElement(By.xpath("//input[@id='username']/parent::div")).click();
+
    }
 
 
@@ -104,5 +106,16 @@ public class SalesforceloginValidationSteps {
 
       driver.findElements(By.xpath("//input[@type='radio']")).size();
 
+   }
+
+   @When("user selects the dynamic dropdown")
+   public void handleDynamicDrop() {
+
+      driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchVieworiginStation1_CTXT")).click();
+      driver.findElement(By.xpath("//a[@value='BLR']")).click();
+      driver.findElement(By.xpath("//div[@id='glsControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTNR']//a[@value='CJB']")).click();
+
+//      WebElement form = driver.findElement(By.id("glsControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTNR"));
+//      form.findElement(By.xpath("//a[@value='CJB']")).click();
    }
 }
