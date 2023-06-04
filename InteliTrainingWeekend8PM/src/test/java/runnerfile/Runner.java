@@ -13,9 +13,6 @@ import org.junit.runner.RunWith;
         glue = {"stepdefinationfile"},
         tags = "@DynamicDropdown"
 
-
-
-
 )
 
 public class Runner {

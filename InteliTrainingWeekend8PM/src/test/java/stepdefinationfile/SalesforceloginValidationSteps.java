@@ -11,6 +11,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 import reusable.BrowserCall;
 
+import java.io.IOException;
+
 public class SalesforceloginValidationSteps {
 
       WebDriver driver ; //null
@@ -41,7 +43,7 @@ public class SalesforceloginValidationSteps {
    }
 
    @Given("user launch the browser and navigate to the url")
-   public void launchURL(){
+   public void launchURL() throws IOException {
 
     driver =  BrowserCall.browserInvo();
 
