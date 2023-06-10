@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.Select;
 import reusable.BrowserCall;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SalesforceloginValidationSteps {
 
@@ -124,4 +126,65 @@ public class SalesforceloginValidationSteps {
      driver.findElement(By.cssSelector("#username"));
      driver.findElement(By.cssSelector(".input.r4.wide.mb16.mt8.username"));
    }
+
+    @Given("user books the <{string}> ticket")
+    public void userBooksTheTicket(String bookingType) {
+
+       if(bookingType.equalsIgnoreCase("one way")){
+
+       }
+       else if(bookingType.equalsIgnoreCase("two way")){
+
+       }
+    }
+
+    @When("Iterate the value from Table")
+    public void iterateTheValueFromTable() {
+
+      WebElement eyTable = driver.findElement(By.cssSelector(".infobox.vcard"));
+
+        List<WebElement> column1=  eyTable.findElements(By.tagName("tr"));
+        List<String> col1Value = new ArrayList<String>();
+        for(WebElement e:column1){
+            col1Value.add( e.getText());
+        }
+
+        System.out.println(col1Value);
+
+        for(String i:col1Value){
+            System.out.println(i);
+        }
+
+//     int rowSize = eyTable.findElements(By.tagName("tr")).size();
+//        System.out.println(rowSize);
+//
+//        for(int i=0 ; i < eyTable.findElements(By.tagName("th")).size() ;i++){
+//
+//           String colunm1value = eyTable.findElements(By.tagName("th")).get(i).getText();
+//            System.out.println(colunm1value);
+//        }
+
+        List<String> col2Value = new ArrayList<String>();
+
+        for(int i=1 ; i < eyTable.findElements(By.tagName("td")).size()  ;i++){
+
+            col2Value.add(eyTable.findElements(By.tagName("td")).get(i).getText());
+        }
+
+        System.out.println(col2Value);
+
+
+    }
+
+    @And("Iterate the value from Table two")
+    public void iterateTheValueFromTableTwo() {
+
+     WebElement revenueTable =  driver.findElement(By.cssSelector(".wikitable"));
+
+     int fy19Size =revenueTable.findElements(By.xpath("//td[4]")).size();
+
+     for (int k=0 ; k < fy19Size ;k++){
+         System.out.println(  revenueTable.findElements(By.xpath("//td[4]")).get(k).getText());
+     }
+    }
 }
