@@ -15,12 +15,13 @@ import java.util.Properties;
 
 public class BrowserCall {
 
-   static WebDriver driver; // null
+  public static WebDriver driver; // null
 
+    public static Properties prob;
     public static WebDriver browserInvo() throws IOException {
 
         FileInputStream fis = new FileInputStream(new File("src/main/resources/utility/confi.properties"));
-        Properties prob = new Properties();
+        prob= new Properties();
         prob.load(fis);
 
 //        if(prob.getProperty("browser").equalsIgnoreCase("edge")){
