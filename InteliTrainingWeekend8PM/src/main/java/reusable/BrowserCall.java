@@ -1,6 +1,5 @@
 package reusable;
 
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,15 +8,13 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class BrowserCall {
 
-  public static WebDriver driver; // null
-
     public static Properties prob;
+    private static ThreadLocal<WebDriver> th = new ThreadLocal<>();
     public static WebDriver browserInvo() throws IOException {
 
         FileInputStream fis = new FileInputStream(new File("src/main/resources/utility/confi.properties"));
@@ -37,21 +34,31 @@ public class BrowserCall {
         switch (prob.getProperty("browser").toLowerCase()){
 
             case "edge":
-                driver = new EdgeDriver();
+                th.set(new EdgeDriver());
                 break;
             case "chrome":
-                driver = new ChromeDriver();
+                th.set(new ChromeDriver());
                 break;
             case "safari":
-                driver = new SafariDriver();
+                th.set(new SafariDriver());
                 break;
             default:
                 throw new InvalidArgumentException("{rovide valid Browser Input");
         }
 
-        driver.get(prob.getProperty("url"));
-        driver.manage().window().maximize();
-        return driver;
+        getDriver().navigate().to(prob.getProperty("url"));
+        getDriver().navigate().refresh();
+//        getDriver().navigate().back();
+//        getDriver().navigate().forward();
+      //  getDriver().get(prob.getProperty("url"));
+        getDriver().manage().window().maximize();
 
+        return getDriver();
+
+    }
+
+    public static WebDriver getDriver(){
+
+       return th.get();
     }
 }

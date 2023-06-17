@@ -11,8 +11,13 @@ import org.junit.runner.RunWith;
 
         features = {"src/test/resources/featurefile"},
         glue = {"stepdefinationfile"},
-        tags = "@Regression",
-        plugin = {"pretty"}
+        tags = "@TSID002",
+        plugin = {"pretty",
+                "html:target/Htmlreport.html",
+                "json:target/Jsonreport.json",
+                "junit:target/Junitreport.xml",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+        }
 
 )
 

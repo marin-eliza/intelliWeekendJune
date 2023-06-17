@@ -12,23 +12,28 @@ public class SigninPage extends BrowserCall {
     //###########Methods###########
     public static void enterEmail(){
 
-        driver.findElement(emailIdLocotor).sendKeys(prob.getProperty("email"));
+        getDriver().findElement(emailIdLocotor).sendKeys(prob.getProperty("email"));
 
     }
 
     public static void clickContinueButton(){
 
-        driver.findElement(continueButtonLocotor).click();
+        getDriver().findElement(continueButtonLocotor).click();
     }
 
     public static void enterPassword(){
 
-        driver.findElement(By.id("ap_password")).sendKeys(prob.getProperty("password"));
+        getDriver().findElement(By.id("ap_password")).sendKeys(prob.getProperty("password"));
     }
 
     public static void clickSignIn(){
 
-        driver.findElement(By.id("signInSubmit")).click();
+        getDriver().findElement(By.id("signInSubmit")).click();
+    }
+
+    public static String getErrorMessage(){
+
+      return getDriver().findElement(By.xpath("//div[@class='a-alert-content']")).getText();
     }
 
 }

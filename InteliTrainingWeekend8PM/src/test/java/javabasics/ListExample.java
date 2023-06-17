@@ -27,5 +27,12 @@ public class ListExample {
         for(int a :l1){
             System.out.println(a);
         }
+
+        List <String> l2 = new ArrayList<String>(); //empty list
+        l2.add("Aravinth");
+        for(String u:l2){
+            System.out.println(u);
+        }
+
     }
 }

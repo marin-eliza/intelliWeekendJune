@@ -1,6 +1,7 @@
 package javabasics;
 
-public class ArrayExample {
+public class ArrayExample extends BankExample {
+    
 
     public static void main(String[] args) {
 

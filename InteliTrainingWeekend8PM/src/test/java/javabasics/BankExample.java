@@ -1,7 +1,8 @@
 package javabasics;
 
-public class BankExample {
+public class BankExample extends ListExample {
 
+    protected int a= 1;
     public static void main(String[] args) {
 
         // role - Manager - 500, Staff - 300 , Clerk - 200
