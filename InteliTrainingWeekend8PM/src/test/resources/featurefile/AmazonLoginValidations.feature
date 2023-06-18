@@ -9,3 +9,21 @@ Feature: user validates the signin and signout functionality
   Scenario: Validate the search functionality
     Given user search the specific product in search tab
     Then results should display for the search result
+
+  @TSID003
+  Scenario Outline: Validate the search functionality
+    Given user search the specific product "<Product>" in search tab
+    Then results should display for the search result "<ExpectedResult>"
+    Examples:
+      | Product         | ExpectedResult               |
+      | Electric Cooker | Amazon.com : Electric Cooker |
+      | iPhone          | Amazon.com : iPhone          |
+
+  @TSID004
+  Scenario Outline: Validate the search functionality
+    Given user search the specific product "<Product>" in search tab
+    Then results should display for the search result
+    Examples:
+      | Product         | ExpectedResult               |
+      | Electric Cooker | Amazon.com : Electric Cooker |
+      | iPhone          | Amazon.com : iPhone          |

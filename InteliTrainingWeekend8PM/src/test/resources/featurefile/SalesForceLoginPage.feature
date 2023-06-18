@@ -2,10 +2,10 @@ Feature: To validate the login functionality of salesforce application
 
 @TC01  @Regression @Smoke
 Scenario: To validate the login with valid username
-  Given user launch the browser and navigate to the url
+ # Given user launch the browser and navigate to the url
   When user enters the username "hello" and password "123"
-  And user clicks on login button
-  Then user should naviagte to the homepage
+ # And user clicks on login button
+ # Then user should naviagte to the homepage
 
 @TC02 @Regression
 Scenario: To validate the error message

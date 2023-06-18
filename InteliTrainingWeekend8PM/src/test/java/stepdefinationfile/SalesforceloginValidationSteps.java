@@ -5,9 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 import reusable.BrowserCall;
@@ -15,8 +13,9 @@ import reusable.BrowserCall;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
-public class SalesforceloginValidationSteps {
+public class SalesforceloginValidationSteps extends BrowserCall{
 
       WebDriver driver ; //null
       WebElement currenyElement;
@@ -50,17 +49,47 @@ public class SalesforceloginValidationSteps {
 
     driver =  BrowserCall.browserInvo();
 
+
+
+    try{
+        driver.findElement(By.id("aravinth")).sendKeys("123");
+    }
+    catch(ElementNotInteractableException e){
+
+
+
+    }
+
+
+
    }
 
    @When("user enters the username {string} and password {string}")
    public void enterUserNamePassword(String username , String password){
 
-      driver.findElement(By.id("username")).sendKeys(username);
+       WebElement enterUN = getDriver().findElement(By.id("username"));
+       WebElement enterPW =  getDriver().findElement(By.id("password"));
+       enterUN.sendKeys(username);
     //  driver.findElement(By.className("input r4 wide mb16 mt8 username")).sendKeys(username);
-      driver.findElement(By.id("password")).sendKeys(password);
+       enterPW.sendKeys(password);
 
      // driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div[2]/div[3]/form/div[1]/div/input[1]"));
     //  driver.findElement(By.xpath("//input[@id='username']")).sendKeys(username);
+
+       getDriver().navigate().refresh();
+       try {
+           enterUN.sendKeys("aravinth");
+           enterPW.sendKeys("123");
+       }
+       catch (StaleElementReferenceException e){
+            enterUN = getDriver().findElement(By.id("username"));
+            enterPW =  getDriver().findElement(By.id("password"));
+           enterUN.sendKeys("aravinth");
+           enterPW.sendKeys("123");
+       }
+
+
+
 
    }
 

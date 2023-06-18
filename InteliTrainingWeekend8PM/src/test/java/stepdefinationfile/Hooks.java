@@ -10,13 +10,19 @@ import java.io.IOException;
 
 public class Hooks extends BrowserCall {
 
-    @Before()
+    @Before(order = 1)
     public void setup() throws IOException {
 
         //before start of every scenario
         System.out.println(".....Browser started......");
         BrowserCall.browserInvo();
 
+    }
+
+    @Before(order= 0,value ="@TSID001")
+    public void specifcCondition(){
+
+        System.out.println("...conditional hook...");
     }
 
     @After()
