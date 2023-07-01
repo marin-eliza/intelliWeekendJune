@@ -7,10 +7,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import reusable.BrowserCall;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
@@ -115,10 +118,30 @@ public class SalesforceloginValidationSteps extends BrowserCall{
       selectCurrency.selectByValue("CAD");
 
       driver.findElement(By.className("paxinfo")).click();
+      //specific wait time
+       WebDriverWait specifcWait = new WebDriverWait(driver, Duration.ofSeconds(60));
       WebElement adultElement = driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchView_DropDownListPassengerType_ADT"));
       Select selectAdult = new Select(adultElement);
       selectAdult.selectByIndex(5);
 
+   }
+
+   public  void waitExample(){
+
+       WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(90));
+       wait.pollingEvery(Duration.ofSeconds(10));
+       wait.ignoring(NoSuchElementException.class);
+       wait.until(ExpectedConditions.presenceOfElementLocated(By.id("ControlGroupSelectView_AvailabilityInputSelectView_GoingNextday")));
+       driver.findElement(By.id("ControlGroupSelectView_AvailabilityInputSelectView_GoingNextday")).click();
+
+       WebElement e = driver.findElement(By.id("ControlGroupSelectView_AvailabilityInputSelectView_GoingNextday"));
+       wait.until(ExpectedConditions.textToBePresentInElement(e,"Next Day"));
+       driver.findElement(By.linkText("Next Day")).click();
+   }
+
+   public void m1(){
+
+    driver.switchTo().alert().dismiss();
    }
 
    @And("user iterates the dropdown values")

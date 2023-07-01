@@ -9,6 +9,7 @@ import org.openqa.selenium.safari.SafariDriver;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 public class BrowserCall {
@@ -52,6 +53,7 @@ public class BrowserCall {
 //        getDriver().navigate().forward();
       //  getDriver().get(prob.getProperty("url"));
         getDriver().manage().window().maximize();
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         return getDriver();
 

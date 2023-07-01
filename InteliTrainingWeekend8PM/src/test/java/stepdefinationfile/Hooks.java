@@ -29,7 +29,7 @@ public class Hooks extends BrowserCall {
     public void tearDown(){
 
         //after executing all the test steps in the scenario
-            getDriver().close();
+         //   getDriver().close();
     }
 
     @BeforeStep()

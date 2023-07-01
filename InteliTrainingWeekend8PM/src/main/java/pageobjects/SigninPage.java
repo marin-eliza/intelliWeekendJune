@@ -28,7 +28,7 @@ public class SigninPage extends BrowserCall {
 
     public static void clickSignIn(){
 
-        getDriver().findElement(By.id("signInSubmit")).click();
+        getDriver().findElement(By.id("signInSubmit")).click(); //5s
     }
 
     public static String getErrorMessage(){
