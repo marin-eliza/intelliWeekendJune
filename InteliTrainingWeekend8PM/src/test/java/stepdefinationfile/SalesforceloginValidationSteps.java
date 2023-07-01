@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,7 +16,9 @@ import reusable.BrowserCall;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 public class SalesforceloginValidationSteps extends BrowserCall{
@@ -227,6 +230,11 @@ public class SalesforceloginValidationSteps extends BrowserCall{
         }
 
         System.out.println(col2Value);
+
+        Map<List , List> m = new HashMap<List,List>();
+        m.put(col1Value,col2Value);
+
+        Assert.assertEquals(m.get("Type"),"Public");
 
 
     }

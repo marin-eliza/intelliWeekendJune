@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
 
         features = {"src/test/resources/featurefile"},
-        glue = {"stepdefinationfile"},
+        glue = {"stepdefinationfile","def"},
         tags = "@Window",
         plugin = {"pretty",
                 "html:target/Htmlreport.html",
