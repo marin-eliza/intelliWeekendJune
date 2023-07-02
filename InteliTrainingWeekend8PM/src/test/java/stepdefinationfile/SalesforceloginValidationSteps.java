@@ -25,6 +25,10 @@ public class SalesforceloginValidationSteps extends BrowserCall{
 
       WebDriver driver ; //null
       WebElement currenyElement;
+    public SalesforceloginValidationSteps(){
+
+    }
+
 
    @Then("validate the error message")
    public void validateErrorMessage() {

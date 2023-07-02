@@ -2,6 +2,7 @@ package javabasics;
 
 public class ConditionsJava {
 
+    int a = 50;
     public static void main(String[] args) {
 
         int firstNumber = 56;
