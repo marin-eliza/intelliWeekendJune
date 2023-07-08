@@ -10,3 +10,4 @@ Feature: To validate the dropdown values
   Scenario: handle Dynamic Dropdown
     Given user launch the browser and navigate to the url
     When user selects the dynamic dropdown
+    And Click
